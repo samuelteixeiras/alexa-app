@@ -157,14 +157,14 @@ app.launch(function(req,res) {
 app.intent('AboutIntent', {
 		"slots":{}
         ,"utterances":["about | about skill | about developer | tell me mor about | who create this app | who create this skill "]
-        }, function(req,res){ AboutIntent(req,res); });
+        }, function(req,res){ AboutIntent(req,res); return false; });
 
 app.intent('BusStopIntent',
            {
 		        "slots":{"stopNumber":"NUMBER"},
             "utterances":["stop {1-100|stopNumber}"]
            },
-           function(req,res){ BusStopIntent(req,res); }
+           function(req,res){ BusStopIntent(req,res); return false; }
           );
 
 // test dictionary
@@ -175,7 +175,7 @@ var result     = utterances(template, slots, dictionary);
 var busStopAndBusIntent = { "slots":{"stopNumber":"NUMBER","bus":"LIST_OF_BUS"}
                            ,"utterances":result };
 
-app.intent('BusStopAndBusIntent', busStopAndBusIntent ,  function(req,res){ BusStopAndBusIntent(req,res); });
+app.intent('BusStopAndBusIntent', busStopAndBusIntent ,  function(req,res){ BusStopAndBusIntent(req,res); return false; });
 
 
 
