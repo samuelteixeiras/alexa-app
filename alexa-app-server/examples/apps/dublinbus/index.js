@@ -9,39 +9,6 @@ var jsdom = require('jsdom')
 module.change_code = 1;
 
 
-// Define an alexa-app 
-var app = new alexa.app('dublinbus');
-
-app.launch(function(req,res) {
-	var message = "Welcome to dublin bus skill by Samuel Teixeira.,<break time='300ms'/> You can use thie skill asking about your stop number or ,<break time='300ms'/> stop number and bus number.,<break time='500ms'/>";
-	  	message +="Example:<break time='300ms'/>Alexa ask dublin bus stop 274.<break time='300ms'/>or , Alexa ask dublin bus stop 274 and bus 38a";
-      // don't close the session in the launch.
-	    res.shouldEndSession(false).say(message);
-});
-
-
-app.intent('AboutIntent', {
-		"slots":{}
-        ,"utterances":["about | about skill | about developer | tell me mor about | who create this app | who create this skill "]
-        }, function(req,res){ AboutIntent(req,res); });
-
-app.intent('BusStopIntent',
-           {
-		        "slots":{"stopNumber":"NUMBER"},
-            "utterances":["stop {1-100|stopNumber}"]
-           },
-           function(req,res){ BusStopIntent(req,res); }
-          );
-
-// test dictionary
-var dictionary = { bus: [ '1', '11','15','15a','15b','15n','38','38a' ] };
-var slots      = { LIST_OF_BUS: 'LITERAL' };
-var template   = 'stop {1-100|stopNumber} and bus {bus|LIST_OF_BUS}';
-var result     = utterances(template, slots, dictionary);
-var busStopAndBusIntent = { "slots":{"stopNumber":"NUMBER","bus":"LIST_OF_BUS"}
-                           ,"utterances":result };
-
-app.intent('BusStopAndBusIntent', busStopAndBusIntent ,  function(req,res){ BusStopAndBusIntent(req,res); });
 
 
 /**
@@ -174,6 +141,43 @@ function getBusInformation(stop,bus,res){
 
         });
 }
+
+
+// Define an alexa-app 
+var app = new alexa.app('dublinbus');
+
+app.launch(function(req,res) {
+	var message = "Welcome to dublin bus skill by Samuel Teixeira.,<break time='300ms'/> You can use thie skill asking about your stop number or ,<break time='300ms'/> stop number and bus number.,<break time='500ms'/>";
+	  	message +="Example:<break time='300ms'/>Alexa ask dublin bus stop 274.<break time='300ms'/>or , Alexa ask dublin bus stop 274 and bus 38a";
+      // don't close the session in the launch.
+	    res.shouldEndSession(false).say(message);
+});
+
+
+app.intent('AboutIntent', {
+		"slots":{}
+        ,"utterances":["about | about skill | about developer | tell me mor about | who create this app | who create this skill "]
+        }, function(req,res){ AboutIntent(req,res); });
+
+app.intent('BusStopIntent',
+           {
+		        "slots":{"stopNumber":"NUMBER"},
+            "utterances":["stop {1-100|stopNumber}"]
+           },
+           function(req,res){ BusStopIntent(req,res); }
+          );
+
+// test dictionary
+var dictionary = { bus: [ '1', '11','15','15a','15b','15n','38','38a' ] };
+var slots      = { LIST_OF_BUS: 'LITERAL' };
+var template   = 'stop {1-100|stopNumber} and bus {bus|LIST_OF_BUS}';
+var result     = utterances(template, slots, dictionary);
+var busStopAndBusIntent = { "slots":{"stopNumber":"NUMBER","bus":"LIST_OF_BUS"}
+                           ,"utterances":result };
+
+app.intent('BusStopAndBusIntent', busStopAndBusIntent ,  function(req,res){ BusStopAndBusIntent(req,res); });
+
+
 
 
 module.exports = app;
