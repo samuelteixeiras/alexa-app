@@ -1,0 +1,15 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "description": "Dublin bus app",
+  "main": "index.js",
+  "author": "Samuel Teixeira <samuelteixeiras@gmail.com> (http://samuelteixeira.com/)",
+  "license": "ISC",
+  "alexa": {
+    "applicationId":"amzn1.echo-sdk-ams.app.999999-d0ed-9999-ad00-999999d00ebe"
+  },
+  "dependencies": { 
+    "alexa-app": "^2.1.0",
+    "jsdom":"9.8.3"
+  }
+}

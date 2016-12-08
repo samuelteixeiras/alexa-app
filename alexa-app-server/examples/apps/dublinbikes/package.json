@@ -1,0 +1,15 @@
+{
+  "name": "dublin_bikes",
+  "version": "1.0.0",
+  "description": "A dublin bikes app",
+  "main": "index.js",
+  "author": "Samuel Teixeira <samuelteixeiras@gmail.com> (http://samuelteixeira.com.br/)",
+  "license": "ISC",
+  "alexa": {
+    "applicationId":"amzn1.ask.skill.0d4b21ed-b101-41a2-9f70-8c19f3c29d8c"
+  },
+  "dependencies": { 
+    "alexa-app": "^2.1.0",
+    "jsdom":"9.8.3" 
+  }
+}
