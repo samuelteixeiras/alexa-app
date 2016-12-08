@@ -10,11 +10,11 @@ module.change_code = 1;
 
 
 // Define an alexa-app 
-var app = new alexa.app('helloworld');
+var app = new alexa.app('dublinbus');
 
 app.launch(function(req,res) {
 	var message = "Welcome to dublin bus skill by Samuel Teixeira.,<break time='300ms'/> You can use thie skill asking about your stop number or ,<break time='300ms'/> stop number and bus number.,<break time='500ms'/>";
-	  	message+="Example:<break time='300ms'/>Alexa ask dublin bus stop 274.<break time='300ms'/>or , Alexa ask dublin bus stop 274 and bus 38a";
+	  	message +="Example:<break time='300ms'/>Alexa ask dublin bus stop 274.<break time='300ms'/>or , Alexa ask dublin bus stop 274 and bus 38a";
       // don't close the session in the launch.
 	    res.shouldEndSession(false).say(message);
 });
@@ -23,16 +23,7 @@ app.launch(function(req,res) {
 app.intent('AboutIntent', {
 		"slots":{}
         ,"utterances":["about | about skill | about developer | tell me mor about | who create this app | who create this skill "]
-        },function(req,res) {
-
-	    var message=["Dublin bus is a Amazon echo skill created by Samuel Teixeira in Dublin,<break time='300ms'/> " +
-	  				 "Using dublin bus you can get information about bus routes in real time.<break time='500ms'/>For more info visit www.samuelteixeira.com.br."
-				    ].join("<break time='1s'/>");
-        res.say(message);
-        res.card("Dublin bus create by Samuel Teixeira",message);
-
-        }
-);
+        },AboutIntent(req,res));
 
 app.intent('BusStopIntent',
            {
@@ -51,6 +42,20 @@ var busStopAndBusIntent = { "slots":{"stopNumber":"NUMBER","bus":"LIST_OF_BUS"}
                            ,"utterances":result };
 
 app.intent('BusStopAndBusIntent', busStopAndBusIntent ,BusStopAndBusIntent(req,res));
+
+
+/**
+* Provide information about the skill.
+**/
+function AboutIntent(req,res) {
+
+    var message=["Dublin bus is a Amazon echo skill created by Samuel Teixeira in Dublin,<break time='300ms'/> " +
+             "Using dublin bus you can get information about bus routes in real time.<break time='500ms'/>For more info visit www.samuelteixeira.com.br."
+            ].join("<break time='1s'/>");
+    res.say(message);
+    res.card("Dublin bus create by Samuel Teixeira",message);
+
+}
 
 /**
 * get the all bus from the stop.
