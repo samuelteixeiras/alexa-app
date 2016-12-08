@@ -24,14 +24,7 @@ function AboutIntent(req,res) {
 
 }
 
-/**
-* get the all bus from the stop.
-* e.g. stop 274
-**/
-function BusStopIntent(req,res){
-    getBusInformation(req.slot('stopNumber'),"0",res);
-    return false;
-}
+
 /**
 * get the bus number / bus number and letter. 
 * e.g. bus fifteen b (15B)
@@ -164,8 +157,10 @@ app.intent('BusStopIntent',
 		        "slots":{"stopNumber":"NUMBER"},
             "utterances":["stop {1-100|stopNumber}"]
            },
-           function(req,res){ BusStopIntent(req,res); return false; }
-          );
+           function(req,res){  
+            getBusInformation(req.slot('stopNumber'),"0",res);
+            return false; 
+          });
 
 // test dictionary
 var dictionary = { bus: [ '1', '11','15','15a','15b','15n','38','38a' ] };
