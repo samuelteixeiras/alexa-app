@@ -140,7 +140,7 @@ function getBusInformation(stop, bus, res) {
 var app = new alexa.app('dublinbus');
 
 app.launch(function (req, res) {
-  var message = "Welcome to dublin bus skill by Samuel Teixeira.,<break time='300ms'/> You can use thie skill asking about your stop number or ,<break time='300ms'/> stop number and bus number.,<break time='500ms'/>";
+  var message = "This skill is not sponsored or endorsed by Dublin Bus.,<break time='300ms'/> You can use this skill asking about your stop number or ,<break time='300ms'/> stop number and bus number.,<break time='500ms'/>";
   message += "Example:<break time='300ms'/>Alexa ask dublin bus stop 274.<break time='300ms'/>or , Alexa ask dublin bus stop 274 and bus 38a";
   // don't close the session in the launch.
   res.shouldEndSession(false).say(message);
