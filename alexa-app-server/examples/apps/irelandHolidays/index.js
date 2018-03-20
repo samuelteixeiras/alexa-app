@@ -26,9 +26,10 @@ function nextHolidayIntent(req, res) {
 
     res.session[COUNT,next];
     var splitDate = bh[next].split("/");  
-    var message = "The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +" <break time='500ms'/>"+
-    "Do you want no the next one?";
-    res.shouldEndSession(false).say(message);
+    var message = "The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +" <break time='500ms'/>";
+    var reprompt = "Do you want no the next one?";
+    res.shouldEndSession(true).say(message);
+    res.say(message).reprompt(reprompt).shouldEndSession(false);
   } else{
     var message = "I am sorry, next bank holidays is next year";
     res.shouldEndSession(true).say(message);
@@ -42,7 +43,7 @@ var bh = ["02/April","07/May","04/June", "06/August","29/October","25/December",
 
 app.intent('AboutIntent', {
   "slots": {}
-  , "utterances": ["about | about skill | about developer | tell me mor about | who create this app | who create this skill "]
+  , "utterances": ["about | about skill | about developer | tell me more about | who create this app | who create this skill "]
 }, function (req, res) { aboutIntent(req, res); return false; });
 
 
@@ -52,6 +53,35 @@ app.intent('NextHolidayIntent', {
 }, function (req, res) { nextHolidayIntent(req, res); return false; }
 
 );
+
+app.intent("AMAZON.HelpIntent", {
+  "slots": {},
+  "utterances": []
+},
+function(request, response) {
+  var helpOutput = "You can say what's the next bank holiday. You can also say stop or exit to quit.";
+  var reprompt = "What would you like to do?";
+  // AMAZON.HelpIntent must leave session open -> .shouldEndSession(false)
+  response.say(helpOutput).reprompt(reprompt).shouldEndSession(false);
+}
+);
+
+app.intent("AMAZON.StopIntent", {
+  "slots": {},
+  "utterances": ["stop"]
+}, function(request, response) {
+  var stopOutput = "Bye";
+  response.say(stopOutput);
+}
+);
+
+app.intent("AMAZON.CancelIntent", {
+  "slots": {},
+  "utterances": []
+}, function(request, response) {
+  var cancelOutput = "Request cancelled.";
+  response.say(cancelOutput);
+});
 
 
 
