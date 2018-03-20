@@ -50,10 +50,6 @@ app.intent('AboutIntent', {
   , "utterances": ["about | about skill | about developer | tell me mor about | who create this app | who create this skill "]
 }, function (req, res) { AboutIntent(req, res); return false; });
 
-app.intent('AboutIntent', {
-  "slots": {}
-  , "utterances": ["about | about skill | about developer | tell me mor about | who create this app | who create this skill "]
-}, function (req, res) { AboutIntent(req, res); return false; });
 
 app.intent('NextHolidayIntent', {
   "slots": {}
