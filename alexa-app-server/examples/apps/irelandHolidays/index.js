@@ -1,9 +1,4 @@
 var alexa = require('alexa-app');
-var utterances = require('alexa-utterances');
-var jsdom = require('jsdom')
-  , request = require('request')
-  , url = require('url');
-
 
 // Allow this module to be reloaded by hotswap when changed
 module.change_code = 1;
@@ -13,7 +8,7 @@ var COUNT = "count";
 /**
 * Provide information about the skill.
 **/
-function AboutIntent(req, res) {
+function aboutIntent(req, res) {
 
     var message = ["You can now when is the next Ireland bank holiday."
     ].join("<break time='1s'/>");
@@ -22,7 +17,7 @@ function AboutIntent(req, res) {
   
 }
 
-function NextHolidayIntent(req, res) {
+function nextHolidayIntent(req, res) {
 
   // start the count in the session
   var next = res.session[COUNT] + 1;
@@ -48,13 +43,15 @@ var bh = ["02/April","07/May","04/June", "06/August","29/October","25/December",
 app.intent('AboutIntent', {
   "slots": {}
   , "utterances": ["about | about skill | about developer | tell me mor about | who create this app | who create this skill "]
-}, function (req, res) { AboutIntent(req, res); return false; });
+}, function (req, res) { aboutIntent(req, res); return false; });
 
 
 app.intent('NextHolidayIntent', {
   "slots": {}
-  , "utterances": ["yes | next | holiday | sure | of course |  please"]
-}, function (req, res) { NextHolidayIntent(req, res); return false; });
+  , "utterances": ["yes | next | next holiday | sure | of course | yes please | please "]
+}, function (req, res) { nextHolidayIntent(req, res); return false; }
+
+);
 
 
 

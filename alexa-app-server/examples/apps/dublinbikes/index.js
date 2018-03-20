@@ -1,5 +1,4 @@
 var alexa = require('alexa-app');
-var utterances = require('alexa-utterances');
 var jsdom = require('jsdom')
 , request = require('request')
 , url = require('url');
