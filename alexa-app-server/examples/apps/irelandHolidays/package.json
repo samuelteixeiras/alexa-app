@@ -9,7 +9,7 @@
     "applicationId": "amzn1.ask.skill.fcf172f5-f551-4d92-9c73-35865c7bb57f"
   },
   "dependencies": {
-    "alexa-app": "2.1.0",
+    "alexa-app": "^2.1.0",
     "jsdom": "9.8.3"
   }
 }
