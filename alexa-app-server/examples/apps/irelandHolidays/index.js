@@ -54,7 +54,7 @@ app.intent('AboutIntent', {
 app.intent('NextHolidayIntent', {
   "slots": {}
   , "utterances": ["yes | next | next holiday | sure | of course | yes please | please"]
-}, function (req, res) { AboutIntent(req, res); return false; });
+}, function (req, res) { NextHolidayIntent(req, res); return false; });
 
 
 
