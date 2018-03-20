@@ -1,0 +1,15 @@
+{
+  "name": "dublin_bank_holidays",
+  "version": "1.0.0",
+  "description": "Ireland public holidays",
+  "main": "index.js",
+  "author": "Samuel Teixeira <samuelteixeiras@gmail.com> (http://samuelteixeira.com/)",
+  "license": "ISC",
+  "alexa": {
+    "applicationId": "amzn1.ask.skill.fcf172f5-f551-4d92-9c73-35865c7bb57f"
+  },
+  "dependencies": {
+    "alexa-app": "2.1.0",
+    "jsdom": "9.8.3"
+  }
+}
