@@ -93,7 +93,7 @@ app.launch(function (req, res) {
   message += "Example:<break time='300ms'/>The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +" <break time='500ms'/>"+
   "Do you want no the next one?";
   // don't close the session in the launch.
-  res.shouldEndSession(false).say(message);
+  res.shouldEndSession(false,nextHolidayIntent).say(message);
   return res.send();
 });
 
