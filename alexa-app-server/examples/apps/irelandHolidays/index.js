@@ -94,7 +94,7 @@ app.launch(function (req, res) {
       "Example:<break time='300ms'/>The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +" <break time='500ms'/>"+
       "Do you want no the next one?"].join("<break time='1s'/>");
   // don't close the session in the launch.
-  res.shouldEndSession(false).say(message);
+  res.say(message).shouldEndSession(false);
   //return res.send();
 });
 
