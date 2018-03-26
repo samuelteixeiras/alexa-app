@@ -97,20 +97,15 @@ app.launch(function (req, res) {
   //return res.send();
 });
 
-app.error = function(exception, request, response) {
-  console.log(exception);
-  console.log(request);
-  console.log(response);
-  response.say("Sorry, something bad happened");
-};
+
 
 app.pre = function(request, response, type) {
-  console.log("type");
+  console.log("type -------------------------------------");
   console.log(type);
-  console.log("request");
+  console.log("request -------------------------------------");
   console.log(request);
 
-  console.log("request.intent");
+  console.log("request.intent -------------------------------------");
   console.log(request.intent);
   console.log("response");
   console.log(response);
