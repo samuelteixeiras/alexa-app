@@ -4,7 +4,7 @@ var alexa = require('alexa-app');
 module.change_code = 1;
 
 var COUNT = "count";
-
+var bh = ["02/April","07/May","04/June", "06/August","29/October","25/December","26/December"];
 /**
 * Provide information about the skill.
 **/
@@ -39,7 +39,7 @@ function nextHolidayIntent(req, res) {
 // Define an alexa-app 
 var app = new alexa.app('bankholidays');
 
-var bh = ["02/April","07/May","04/June", "06/August","29/October","25/December","26/December"];
+
 
 app.intent('AboutIntent', {
   "slots": {}
