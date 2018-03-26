@@ -21,7 +21,7 @@ function aboutIntent(req, res) {
 function nextHolidayIntent(req, res) {
 
   // start the count in the session
-  var next = res.session[COUNT] + 1;
+  var next = req.session[COUNT] + 1;
   console.log(bh);
   console.log(next);
   if(bh.length <= next ){
@@ -90,17 +90,12 @@ app.launch(function (req, res) {
   // start the count in the session
   res.session[COUNT,0];
   var splitDate = bh[0].split("/");  
-  var message = "Hi, you can ask about the next bank holidays.<break time='500ms'/>"+
-      "Example:<break time='300ms'/>The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +" <break time='500ms'/>"+
+  var message = "Hi, you can ask about the next bank holidays."+
+      "The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +
       "Do you want no the next one?";
   // don't close the session in the launch.
- // res.say(message);
-  //return res.send();
-
-  var message = "Welcome to dublin bikes skill by Samuel Teixeira.,<break time='300ms'/> You can use thie skill asking about your station number or ,<break time='300ms'/> station name.,<break time='500ms'/>";
-  message+="Example:<break time='300ms'/>Alexa ask dublin bikes station 42.<break time='300ms'/>or , Alexa ask dublin bikes station Dame Street.";
   res.say(message);
-  res.card("Created by Samuel Teixeira",message);
+
 });
 
 
