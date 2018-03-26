@@ -90,11 +90,11 @@ app.launch(function (req, res) {
   // start the count in the session
   res.session[COUNT,0];
   var splitDate = bh[0].split("/");  
-  var message = ["Hi, you can ask about the next bank holidays.<break time='500ms'/>"+
+  var message = "Hi, you can ask about the next bank holidays.<break time='500ms'/>"+
       "Example:<break time='300ms'/>The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +" <break time='500ms'/>"+
-      "Do you want no the next one?"].join("<break time='1s'/>");
+      "Do you want no the next one?";
   // don't close the session in the launch.
-  res.say(message).shouldEndSession(false);
+  res.say(message);
   //return res.send();
 });
 
