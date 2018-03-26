@@ -94,7 +94,7 @@ app.launch(function (req, res) {
   "Do you want no the next one?";
   // don't close the session in the launch.
   res.shouldEndSession(false,nextHolidayIntent).say(message);
-  return res.send();
+  //return res.send();
 });
 
 module.exports = app;
