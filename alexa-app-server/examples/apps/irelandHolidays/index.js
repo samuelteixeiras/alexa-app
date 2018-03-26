@@ -4,6 +4,7 @@ var alexa = require('alexa-app');
 module.change_code = 1;
 
 var COUNT = "count";
+var bh = ["02/April","07/May","04/June", "06/August","29/October","25/December","26/December"];
 
 /**
 * Provide information about the skill.
@@ -12,7 +13,7 @@ function aboutIntent(req, res) {
 
     var message = ["You can now when is the next Ireland bank holiday."
     ].join("<break time='1s'/>");
-    res.say(message);
+    res.say(message).send();
     res.card("Create by Samuel Teixeira samuelteixeiras@gmail.com", message);
   
 }
@@ -21,16 +22,16 @@ function nextHolidayIntent(req, res) {
 
   // start the count in the session
   var next = res.session[COUNT] + 1;
-
+  console.log(bh);
+  console.log(next);
   if(bh.length <= next ){
 
     res.session[COUNT,next];
     var splitDate = bh[next].split("/");  
     var message = "The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +" <break time='500ms'/>";
     var reprompt = "Do you want no the next one?";
-    res.shouldEndSession(true).say(message);
     res.say(message).reprompt(reprompt).shouldEndSession(false);
-  } else{
+  } else {
     var message = "I am sorry, next bank holidays is next year";
     res.shouldEndSession(true).say(message);
   }
@@ -39,7 +40,7 @@ function nextHolidayIntent(req, res) {
 // Define an alexa-app 
 var app = new alexa.app('bankholidays');
 
-var bh = ["02/April","07/May","04/June", "06/August","29/October","25/December","26/December"];
+
 
 app.intent('AboutIntent', {
   "slots": {}
@@ -107,8 +108,7 @@ app.pre = function(request, response, type) {
 
   console.log("request.intent -------------------------------------");
   console.log(request.intent);
-  console.log("response");
-  console.log(response);
+ 
 
 };
 
