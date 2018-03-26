@@ -105,8 +105,14 @@ app.error = function(exception, request, response) {
 };
 
 app.pre = function(request, response, type) {
+  console.log("type");
   console.log(type);
+  console.log("request");
   console.log(request);
+
+  console.log("request.intent");
+  console.log(request.intent);
+  console.log("response");
   console.log(response);
 
 };
