@@ -49,7 +49,7 @@ app.intent('AboutIntent', {
 
 app.intent('NextHolidayIntent', {
   "slots": {}
-  , "utterances": ["yes | next | next holiday | sure | of course | yes please | please "]
+  , "utterances": ["yes|next|next holiday|sure|of course|yes please|please"]
 }, function (req, res) { nextHolidayIntent(req, res); return false; }
 
 );
@@ -94,6 +94,7 @@ app.launch(function (req, res) {
   "Do you want no the next one?";
   // don't close the session in the launch.
   res.shouldEndSession(false).say(message);
+  return response.send();
 });
 
 module.exports = app;
