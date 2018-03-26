@@ -94,8 +94,12 @@ app.launch(function (req, res) {
       "Example:<break time='300ms'/>The next bank holidays is "+ splitDate[0]+ " of "+ splitDate[1] +" <break time='500ms'/>"+
       "Do you want no the next one?";
   // don't close the session in the launch.
-  res.say(message);
+ // res.say(message);
   //return res.send();
+
+  var message = "Welcome to dublin bikes skill by Samuel Teixeira.,<break time='300ms'/> You can use thie skill asking about your station number or ,<break time='300ms'/> station name.,<break time='500ms'/>";
+  message+="Example:<break time='300ms'/>Alexa ask dublin bikes station 42.<break time='300ms'/>or , Alexa ask dublin bikes station Dame Street.";
+res.say(message);
 });
 
 
