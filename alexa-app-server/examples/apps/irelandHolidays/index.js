@@ -99,7 +99,8 @@ app.launch(function (req, res) {
 
   var message = "Welcome to dublin bikes skill by Samuel Teixeira.,<break time='300ms'/> You can use thie skill asking about your station number or ,<break time='300ms'/> station name.,<break time='500ms'/>";
   message+="Example:<break time='300ms'/>Alexa ask dublin bikes station 42.<break time='300ms'/>or , Alexa ask dublin bikes station Dame Street.";
-res.say(message);
+  res.say(message);
+  res.card("Created by Samuel Teixeira",message);
 });
 
 
